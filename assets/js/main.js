@@ -76,18 +76,18 @@ servicesButtons.forEach(button => {
     const servicesCards = document.querySelectorAll('.services__card'),
           currentCard = button.parentNode,
           currentInfo = currentCard.querySelector('.services__info'),
-          isCardOpen = currentCard.classList.contains('services__open')
+          isCardOpen = currentCard.classList.contains('services-open')
 
     // Close all other services info
     servicesCards.forEach(card => {
-      card.classList.replace('services__open', 'services__close')
+      card.classList.replace('services-open', 'services-close')
       const info = card.querySelector('.services__info')
       info.style.height = '0'
     })
 
     // Open only if not already open
     if (!isCardOpen) {
-      currentCard.classList.replace('services__close', 'services__open')
+      currentCard.classList.replace('services-close', 'services-open')
       currentInfo.style.height = currentInfo.scrollHeight + 'px'
     }
   })
