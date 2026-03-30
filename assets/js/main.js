@@ -64,7 +64,34 @@ tabs.forEach((tab) => {
 })
 
 /*=============== SERVICES ACCORDION ===============*/
+const servicesButtons = document.querySelectorAll('.services__button')
 
+// Initialize all info sections with their natural height
+document.querySelectorAll('.services__info').forEach(info => {
+  info.style.height = info.scrollHeight + 'px'
+})
+
+servicesButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const servicesCards = document.querySelectorAll('.services__card'),
+          currentCard = button.parentNode,
+          currentInfo = currentCard.querySelector('.services__info'),
+          isCardOpen = currentCard.classList.contains('services__open')
+
+    // Close all other services info
+    servicesCards.forEach(card => {
+      card.classList.replace('services__open', 'services__close')
+      const info = card.querySelector('.services__info')
+      info.style.height = '0'
+    })
+
+    // Open only if not already open
+    if (!isCardOpen) {
+      currentCard.classList.replace('services__close', 'services__open')
+      currentInfo.style.height = currentInfo.scrollHeight + 'px'
+    }
+  })
+})
 
 /*=============== TESTIMONIALS OF DUPLICATE CARDS ===============*/
 
