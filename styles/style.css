@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7e9;
+    /* background-color: #c4f1dc; */
+    /* background-color: #eee; */
+    color: #333;
+    line-height: 1.6;
+    padding: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #0063c6;
+    /* color: rgb(36, 218, 36); */
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    margin-bottom: 3 px;
+}
+.text-hey {
+    color: rgb(36, 218, 36);
+    text-shadow: 1px 1px 20px rgb(108, 255, 108);
+}
+
+.header, .info-box, .navbar, .footer {
+    padding: 1.5rem; 
+    text-align: left; 
+    max-width: 800px; 
+    width: 100%;
+    height:fit-content;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+.content-1:hover, .content-2:hover, .content-3:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    overflow:auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE & Edge */
+    /* padding-left: 10px; */
+}
+
+.navbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.navbar ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.navbar ul li a:hover {
+    /* color: #ff512f; */
+    color: #000;
+}
+
+.important-links {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.important-links a {
+    text-decoration: none;
+    color: #000;
+}
+
+.important-links a:hover {
+    color: rgb(36, 218, 36);
+}
+
+
+#heart-ledger {
+    /* border: 2px solid #e0e7ff; */
+    border: 3px dashed #6b7280;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+#heart-ledger ul {
+    text-align: center;
+    color: dimgray;
+}
+
+#heart-ledger h2 {
+    font-family: "Bonheur Royale", cursive;
+    font-size: 3em;
+    color: dimgray;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#heart-ledger .tagline {
+    font-family: 'Georgia', serif;
+    font-size: 1.3em;
+    color: #6b7280;
+    font-style: italic;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
