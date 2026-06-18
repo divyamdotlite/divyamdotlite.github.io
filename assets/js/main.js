@@ -1,4 +1,4 @@
-/*=============== HOME SPLIT TEXT ===============*/
+/*--------------- HOME SPLIT TEXT ---------------*/
 const { animate, splitText, stagger } = anime;
 
 const { chars: chars1 } = splitText('.home__profession-1', { chars: true });
@@ -25,7 +25,7 @@ animate(chars2, {
   delay: stagger(80),
   loop: true,
 })
-/*=============== SWIPER PROJECTS ===============*/
+/*--------------- SWIPER PROJECTS ---------------*/
 const swiperProjects = new Swiper('.projects__swiper', {
   loop: true,
   spaceBetween: 24,
@@ -44,7 +44,7 @@ const swiperProjects = new Swiper('.projects__swiper', {
   }
 })
 
-/*=============== WORK TABS ===============*/
+/*--------------- WORK TABS ---------------*/
 const tabs = document.querySelectorAll('[data-target]'),
   tabContents = document.querySelectorAll('[data-content]')
 
@@ -63,7 +63,7 @@ tabs.forEach((tab) => {
   })
 })
 
-/*=============== SERVICES ACCORDION ===============*/
+/*--------------- SERVICES ACCORDION ---------------*/
 const servicesButtons = document.querySelectorAll('.services__button')
 
 // Initialize all info sections with their natural height
@@ -93,7 +93,7 @@ servicesButtons.forEach(button => {
   })
 })
 
-/*=============== TESTIMONIALS OF DUPLICATE CARDS ===============*/
+/*--------------- TESTIMONIALS OF DUPLICATE CARDS ---------------*/
 // Duplicate image to make the animation work
 const tracks = document.querySelectorAll('.testimonials__content')
 
@@ -106,19 +106,61 @@ tracks.forEach(track => {
   }
 })
 
-/*=============== COPY EMAIL IN CONTACT ===============*/
+/*--------------- COPY EMAIL IN CONTACT ---------------*/
+const copyBtn = document.getElementById('contact-btn'),
+  copyEmail = document.getElementById('contact-email').textContent
 
+copyBtn.addEventListener('click', () => {
+  // Use the clipboard API to copy text
+  navigator.clipboard.writeText(copyEmail).then(() => {
+    copyBtn.innerHTML = 'Email copied <i class="ri-check-line"></i>'
 
-/*=============== CURRENT YEAR OF THE FOOTER ===============*/ 
+    // Restore the original text
+    setTimeout(() => {
+      copyBtn.innerHTML = 'Copy email <i class="ri-file-copy-line"></i>'
+    }, 2000)
+  })
+})
+/*--------------- CURRENT YEAR OF THE FOOTER ---------------*/ 
+const textYear = document.getElementById('footer-year'),
+      currentYear = new Date().getFullYear()
 
+// Each year is updated automatically
+textYear.textContent = currentYear
 
-/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+/*--------------- SCROLL SECTIONS ACTIVE LINK ---------------*/
+const sections = document.querySelectorAll('section[id]')
 
+const scrollActive = () => {
+  // We get the position by scrolling down
+  const scrollY = window.scrollY
 
-/*=============== CUSTOM CURSOR ===============*/
+  sections.forEach(section => {
+    const id = section.id, // id of each section
+          top = section.offsetTop - 50, // Distance from the top edge
+          height = section.offsetHeight, // Element height
+          link = document. querySelector(' .nav__menu a[href *=' + id + ']') // id nav link
 
+  if(!link) return
 
-/* Hide custom cursor on links */
+  link.classList.toggle('active-link', scrollY > top && scrollY <= top + height)
+  })
+}
+window. addEventListener('scroll', scrollActive)
 
+/*--------------- SCROLL REVEAL ANIMATION ---------------*/
+const sr = ScrollReveal({
+  origin: 'top',
+  distance: '60px',
+  delay: 300,
+  // reset: true, // Animations repeat
+})
 
-/*=============== SCROLL REVEAL ANIMATION ===============*/
+sr.reveal(`.home__image, .projects__container, .work__container,
+           .testimonials__container, .contact__container`)
+sr.reveal(`.home__data`, {delay: 900, origin:'bottom'})
+sr.reveal(`.home__info`, {delay: 1200, origin:'bottom'})
+sr.reveal(`.home__social, .home__cv`, {delay: 1500})
+sr.reveal(`.about__data`, {origin: 'left'})
+sr.reveal(`.about__image`, {origin: 'right'})
+sr.reveal(`.services__card`, {interval: 100})

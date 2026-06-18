@@ -1,0 +1,4 @@
+Name: {home-profile, about-profile}
+Type: png
+Size: 250kb
+Dimension: 800x937
